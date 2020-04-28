@@ -1,0 +1,20 @@
+---
+- name: Import virtualbox apt key
+  apt_key:
+    url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
+    state: present
+
+- name: Add virtualbox apt repo
+  apt_repository:
+    repo: 'deb [arch=amd64] http://download.virtualbox.org/virtualbox/{{ ansible_os_family|lower }} {{ host_distribution_release if host_distribution_release is defined else ansible_distribution_release }} contrib'
+    state: present
+    update_cache: yes
+
+- name: Install virtualbox
+  apt:
+    state: present
+    name: virtualbox-6.0
+
+- name: Install vagrant
+  apt:
+    deb: "https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_{{ ansible_architecture }}.deb"
