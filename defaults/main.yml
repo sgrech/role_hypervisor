@@ -1,3 +1,2 @@
 ---
-download_dir: "/home/{{ ansible_user }}/tmp"
 vagrant_version: 2.2.7
