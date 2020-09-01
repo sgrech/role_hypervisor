@@ -13,7 +13,10 @@
 - name: Install virtualbox
   apt:
     state: present
-    name: virtualbox-6.1
+    name:
+      - virtualbox
+      - virtualbox-dkms
+      - virtualbox-guest-dkms
 
 - name: Install vagrant
   apt:
